@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:bullseye
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+  # loki:
+  #   image: grafana/loki:2.8.0
+  #   restart: always
+  #   ports:
+  #     - 3100:5000
+  # grafana:
+  #   image: grafana/grafana:8.4.6
+  #   restart: always
+  #   ports:
+  #     - 3000:5001
+  # prometheus:
+  #   image: prom/prometheus:v2.36.0
+  #   restart: always
+  #   ports:
+  #     - 9090:5002
