@@ -1,0 +1,11 @@
+providers:
+  file:
+    filename: /etc/traefik/traefik_cfg.yml
+
+api:
+  dashboard: true
+  insecure: true
+
+entryPoints:
+  web:
+    address: ":5000"

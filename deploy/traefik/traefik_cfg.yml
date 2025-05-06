@@ -1,0 +1,22 @@
+http:
+  routers:
+    main-router:
+      entryPoints:
+        - web
+      service: main-backend
+      rule: PathPrefix(`/api/v1`)
+    ui-router:
+      entryPoints:
+        - web
+      service: ui
+      rule: Host(`localhost`)
+
+  services:
+    main-backend:
+      loadBalancer:
+        servers:
+          - url: http://host.docker.internal:8080/
+    ui:
+      loadBalancer:
+        servers:
+          - url: http://host.docker.internal:5173/

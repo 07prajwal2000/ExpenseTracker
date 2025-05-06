@@ -10,6 +10,14 @@ services:
       - 5432:5432
     volumes:
       - ./pg_data:/var/lib/postgresql/data
+  traefik:
+    image: traefik:latest
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - "./deploy/traefik/traefik.yml:/etc/traefik/traefik.yml"
+      - "./deploy/traefik/traefik_cfg.yml:/etc/traefik/traefik_cfg.yml" 
   # loki:
   #   image: grafana/loki:2.8.0
   #   restart: always
