@@ -1,7 +1,12 @@
 import { AppShell, Button, Group, ScrollArea, Title } from "@mantine/core";
+import { useParams } from "@tanstack/react-router";
 import React from "react";
 
 const CustomAppShell: React.FC<{ children: any }> = ({ children }) => {
+	const { id: expenseId } = useParams({
+		from: "/expense/$id",
+	});
+
 	return (
 		<AppShell
 			header={{ height: 60 }}
@@ -14,12 +19,33 @@ const CustomAppShell: React.FC<{ children: any }> = ({ children }) => {
 				</Group>
 			</AppShell.Header>
 			<AppShell.Navbar p={"sm"}>
-				<AppShell.Section grow my={"sm"} component={ScrollArea}>
-					nav items
-				</AppShell.Section>
-				<AppShell.Section style={{}}>
-					<Button fullWidth variant="outline" color="red">
-						Logout
+				<AppShell.Section grow mb={"sm"} component={ScrollArea}>
+					<Button
+						variant="default"
+						fullWidth
+						style={{
+							border: "none",
+						}}
+					>
+						Dashboard
+					</Button>
+					<Button
+						variant="default"
+						fullWidth
+						style={{
+							border: "none",
+						}}
+					>
+						Bills
+					</Button>
+					<Button
+						variant="default"
+						fullWidth
+						style={{
+							border: "none",
+						}}
+					>
+						Contributors
 					</Button>
 				</AppShell.Section>
 			</AppShell.Navbar>

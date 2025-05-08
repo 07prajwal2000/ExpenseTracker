@@ -11,8 +11,8 @@ export interface Expense {
 
 // schema
 export const createExpenseSchema = z.object({
-	title: z.string().min(2),
-	description: z.string(),
+	title: z.string().min(2).max(100),
+	description: z.string().max(512),
 });
 export const updateExpenseSchema = z.object({
 	title: z.string().min(2),

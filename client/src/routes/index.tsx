@@ -6,12 +6,15 @@ import {
 	Flex,
 	Grid,
 	Group,
+	Modal,
 	Text,
 	Title,
 } from "@mantine/core";
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { getAllExpenses } from "../data/expense";
 import ExpenseCard from "../components/expenseCard";
+import { useDisclosure } from "@mantine/hooks";
+import CreateExpenseForm from "../components/createExpenseForm";
 
 export const Route = createFileRoute("/")({
 	component: Index,
@@ -26,13 +29,14 @@ export const Route = createFileRoute("/")({
 
 function Index() {
 	const { data } = Route.useLoaderData();
+	const [opened, { open, close }] = useDisclosure(false);
 
 	return (
 		<Container fluid mx={0}>
 			<Flex direction={"column"} gap={6}>
 				<Group justify="space-between">
 					<Title order={2}>Dashboard</Title>
-					<Button size="xs">
+					<Button onClick={open} size="xs">
 						<Group align="center" justify="space-around" gap={3}>
 							<MdAdd size={20} />
 							<Text>Add Expense</Text>
@@ -53,6 +57,9 @@ function Index() {
 						</Grid.Col>
 					))}
 				</Grid>
+				<Modal size={'lg'} title="Create a new Expense" opened={opened} onClose={close}>
+					<CreateExpenseForm onSuccess={close} />
+				</Modal>
 			</Flex>
 		</Container>
 	);

@@ -8,6 +8,7 @@ import "@mantine/notifications/styles.css";
 import {
 	MantineProvider,
 } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 import { routeTree } from "./routeTree.gen";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
@@ -28,6 +29,7 @@ createRoot(document.getElementById("root")!).render(
 				fontFamily: "Inter, sans-serif",
 			}}
 		>
+			<Notifications />
 			<RouterProvider router={router} />
 		</MantineProvider>
 	</StrictMode>
